@@ -11,7 +11,7 @@ external-ui: ui
 external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
 bind-address: '*'
 tcp-concurrent: true
-routing-mark: 16666
+#routing-mark: 16666
 
 geodata-mode: true                   # 更改 geoip 使用文件，mmdb 或者 dat，可选 true/false,true为 dat，此项有默认值 false
 geodata-loader: memconservative      # GEO 文件加载模式，standard：标准加载器 memconservative：专为内存受限 (小内存) 设备优化的加载器 (默认值)
