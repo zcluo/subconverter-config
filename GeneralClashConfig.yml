@@ -1,0 +1,177 @@
+mode: rule
+mixed-port: 5330
+socks-port: 2333
+port: 2334
+allow-lan: true
+log-level: info
+ipv6: true
+external-controller: 127.0.0.1:19090
+secret: ''
+external-ui: ui
+external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+bind-address: '*'
+tcp-concurrent: true
+routing-mark: 16666
+
+geodata-mode: true                   # 更改 geoip 使用文件，mmdb 或者 dat，可选 true/false,true为 dat，此项有默认值 false
+geodata-loader: memconservative      # GEO 文件加载模式，standard：标准加载器 memconservative：专为内存受限 (小内存) 设备优化的加载器 (默认值)
+geo-auto-update: true                # 自动更新 GEO
+geo-update-interval: 24              # 更新间隔，单位为小时
+geox-url:
+  geoip: 'https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat'
+  geosite: 'https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat'
+  mmdb: 'https://testingcf.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/Country.mmdb'
+  asn: 'https://mirror.ghproxy.com/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb'
+                                     # 自定义 GEO 下载地址
+experimental:
+  ignore-resolve-fail: true
+  sniff-tls-sni: true
+  udp-fallback-match: true
+find-process-mode: always
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+tun:
+  enable: false
+  stack: gvisor
+  device: Meta
+  dns-hijack:
+  - any:53
+  auto-detect-interface: true
+  auto-route: true
+  mtu: 1500
+  strict-route: false
+  gso: true
+  gso-max-size: 65536
+  auto-redirect: true
+  udp-timeout: 300
+  route-address:
+  - 0.0.0.0/1
+  - 128.0.0.0/1
+  - ::/1
+  - 8000::/1
+  endpoint-independent-nat: false
+dns:
+  enable: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  ipv6-timeout: 150
+  use-system-hosts: false
+  cache-algorithm: arc
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.example"
+    - "*.home.arpa"
+    - "*.invalid"
+    - "*.lan"
+    - "*.local"
+    - "*.localdomain"
+    - "*.localhost"
+    - "*.test"
+    - mesu.apple.com
+    - swscan.apple.com
+    - "*.router.asus.com"
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.ipv6.microsoft.com"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - msftconnecttest.com
+    - msftncsi.com
+    - ntp.*.com
+    - ntp1.*.com
+    - ntp2.*.com
+    - ntp3.*.com
+    - ntp4.*.com
+    - ntp5.*.com
+    - ntp6.*.com
+    - ntp7.*.com
+    - time.*.apple.com
+    - time.*.com
+    - time.*.gov
+    - time1.*.com
+    - time2.*.com
+    - time3.*.com
+    - time4.*.com
+    - time5.*.com
+    - time6.*.com
+    - time7.*.com
+    - time.*.edu.cn
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - +.pool.ntp.org
+    - time1.cloud.tencent.com
+    - localhost.ptlogin2.qq.com
+    - localhost.sec.qq.com
+  
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  - 1.1.1.1
+  - 8.8.8.8
+  nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  - https://doh.360.cn/dns-query
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+  - https://208.67.222.222/dns-query
+  - https://208.67.220.220/dns-query
+  - https://194.242.2.2/dns-query
+  - https://194.242.2.3/dns-query
+  proxy-server-nameserver:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+  - https://doh.360.cn/dns-query
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+  - https://208.67.222.222/dns-query
+  - https://208.67.220.220/dns-query
+  - https://194.242.2.2/dns-query
+  - https://194.242.2.3/dns-query
+  nameserver-policy:
+    geosite:private,cn,geolocation-cn:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://doh.360.cn/dns-query
+    geosite:google,youtube,telegram,gfw,geolocation-!cn:
+    - https://1.1.1.1/dns-query
+    - https://1.0.0.1/dns-query
+    - https://208.67.222.222/dns-query
+    - https://208.67.220.220/dns-query
+    - https://194.242.2.2/dns-query
+    - https://194.242.2.3/dns-query
+  fallback-filter:
+    ipcidr:
+      - 0.0.0.0/32
+      - 100.64.0.0/10
+      - 127.0.0.0/8
+      - 240.0.0.0/4
+      - 255.255.255.255/32
+profile:
+  store-fake-ip: true
+  store-selected: true
+  tracing: true
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    QUIC:
+      ports:
+      - 443
+      - 8443
+    TLS:
+      ports:
+      - 443
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+  skip-domain:
+  - Mijia Cloud
+  - +.mijia.tech
