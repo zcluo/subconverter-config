@@ -32,7 +32,7 @@ global-client-fingerprint: chrome
 keep-alive-interval: 15
 tun:
   enable: true
-  stack: gvisor
+  stack: system
   device: Meta
   dns-hijack:
   - any:53
