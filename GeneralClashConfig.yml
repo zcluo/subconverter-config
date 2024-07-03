@@ -31,7 +31,7 @@ find-process-mode: always
 global-client-fingerprint: chrome
 keep-alive-interval: 15
 tun:
-  enable: false
+  enable: true
   stack: gvisor
   device: Meta
   dns-hijack:
