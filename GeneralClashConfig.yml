@@ -39,7 +39,7 @@ tun:
   auto-detect-interface: true
   auto-route: true
   mtu: 9000
-  strict-route: false
+  strict-route: true
   gso: true
   gso-max-size: 65536
   auto-redirect: true
