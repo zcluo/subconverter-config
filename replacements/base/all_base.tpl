@@ -584,8 +584,10 @@ enhanced-mode-by-rule = true
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "tun0",
-      "inet4_address": "22.0.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
+      "address": [
+                "172.19.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
       "mtu": 9000,
       "auto_route": true,
       "strict_route": true,
