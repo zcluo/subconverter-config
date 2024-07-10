@@ -590,6 +590,7 @@ enhanced-mode-by-rule = true
             ],
       "mtu": 9000,
       "auto_route": true,
+      "gso": true,
       "strict_route": true,
       "domain_strategy": "prefer_ipv4",
       "endpoint_independent_nat": false,
