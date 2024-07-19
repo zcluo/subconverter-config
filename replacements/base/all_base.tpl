@@ -471,203 +471,266 @@ enhanced-mode-by-rule = true
 {% if request.target == "singbox" %}
 
 {
-  "log": {
-    "disabled": false,
-    "level": "info",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "local",
-        "address": "tls://223.5.5.5",
-        "address_resolver": "dns_resolver",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "prefer_ipv4",
+    "log": {
+        "level": "info",
+        "timestamp": true
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": ":9090",
+            "external_ui": "",
+            "secret": "",
+            "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
+            "external_ui_download_detour": "节点选择",
+            "default_mode": "Enhanced"
+        },
+        "cache_file": {
+            "enabled": true,
+            "store_rdrc": true,
+            "store_fakeip": true
+        }
+    },
+    "ntp": {
+        "enabled": false,
+        "server": "time.apple.com",
+        "server_port": 123,
+        "interval": "30m",
         "detour": "DIRECT"
-      },
-      {
-        "tag": "remote",
-        "address": "tls://1.1.1.1",
-        "address_resolver": "dns_resolver",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "prefer_ipv4",
-        "detour": "🚀 节点选择"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
-      },
-      {
-        "tag": "dns_resolver",
-        "address": "tls://223.5.5.5",
-        "detour": "DIRECT"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
-      }
-    ],
-    "rules": [
-      {
-        "outbound": [
-          "any"
-        ],
-        "server": "dns_resolver"
-      },
-      {
-        "inbound": [
-          "tun-in"
-        ],
-        "query_type": [
-          "A",
-          "AAAA",
-          "HTTPS"
-        ],
-        "network": [
-          "tcp",
-          "udp"
-        ],
-        "protocol": [
-          "tls",
-          "http",
-          "quic"
-        ],
-        "port": [
-          80,
-          443
-        ],
-        "port_range": [
-          "1000:2000",
-          ":3000",
-          "4000:"
-        ],
-        "clash_mode": "Rule",
-        "invert": false,
-        "outbound": [
-          "any"
-        ],
-        "server": "fakeip",
-        "disable_cache": false,
-        "rewrite_ttl": 100
-      },
-      {
-        "clash_mode": "Global",
-        "server": "remote"
-      },
-      {
-        "clash_mode": "Direct",
-        "server": "local"
-      }
-    ],
-    "final": "",
-    "strategy": "prefer_ipv4",
-    "disable_cache": false,
-    "disable_expire": false,
-    "independent_cache": true,
-    "reverse_mapping": true,
-    "fakeip": {
-      "enabled": true,
-      "inet6_range": "fc00::\/18",
-      "inet4_range": "28.0.0.0\/8"
-    }
-  },
-  "ntp": {
-    "enabled": false,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m",
-    "detour": "DIRECT"
-  },
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "tun0",
-      "address": [
+    },
+    "inbounds": [
+        {
+            "type": "mixed",
+            "listen": "::",
+            "listen_port": 5330,
+            "sniff": true,
+            "sniff_override_destination": true,
+            "domain_strategy": "prefer_ipv4",
+            "tcp_fast_open": true,
+            "tcp_multi_path": true,
+            "udp_fragment": true,
+            "set_system_proxy": false
+        },
+        {
+            "type": "mixed",
+            "listen": "::",
+            "listen_port": 2334,
+            "sniff": true,
+            "sniff_override_destination": true,
+            "domain_strategy": "prefer_ipv4",
+            "tcp_fast_open": true,
+            "tcp_multi_path": true,
+            "udp_fragment": true,
+            "set_system_proxy": false
+        },
+        {
+            "tag": "tun",
+            "type": "tun",
+            "interface_name": "singbox",
+            "address": [
                 "172.19.0.1/30",
                 "fdfe:dcba:9876::1/126"
             ],
-      "mtu": 9000,
-      "auto_route": true,
-      "gso": true,
-      "strict_route": true,
-      "domain_strategy": "prefer_ipv4",
-      "endpoint_independent_nat": false,
-      "stack": "mixed",
-      "sniff": true,
-      "sniff_override_destination": true,
-      "sniff_timeout": "300ms",
-      "platform": {
-        "http_proxy": {
-          "enabled": false,
-          "server": "127.0.0.1",
-          "server_port": 2334
+            "mtu": 9000,
+            "auto_route": true,
+            "gso": true,
+            "strict_route": true,
+            "endpoint_independent_nat": true,
+            "stack": "system",
+            "platform": {
+                "http_proxy": {
+                    "enabled": false,
+                    "server": "127.0.0.1",
+                    "server_port": 2334
+                }
+            },
+            "sniff": true,
+            "sniff_override_destination": true,
+            "domain_strategy": "prefer_ipv4"
         }
-      }
-    },
-    {
-      "type": "mixed",
-      "listen": "::",
-      "listen_port": 5330,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
-      "tcp_fast_open": true,
-      "tcp_multi_path": true,
-      "udp_fragment": true,
-      "set_system_proxy": false
-    },
-    {
-      "type": "mixed",
-      "listen": "::",
-      "listen_port": 2334,
-      "sniff": true,
-      "sniff_override_destination": true,
-      "domain_strategy": "prefer_ipv4",
-      "tcp_fast_open": true,
-      "tcp_multi_path": true,
-      "udp_fragment": true,
-      "set_system_proxy": false
-    }
-  ],
-  "outbounds": [],
-  "route": {
-    "rules": [
-      {
-        "port": 53,
-        "outbound": "dns-out"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "DIRECT"
-      },
-      {
-        "clash_mode": "Global",
-        "outbound": "select"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "DIRECT"
-      }
     ],
-    "auto_detect_interface": true,
-    "override_android_vpn": true,
-    "find_process": true
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "0.0.0.0:19090",
-      "secret": "",
-      "default_mode": "Rule"
+    "outbounds": [],
+    "route": {
+        "rule_set": [
+            {
+                "tag": "GEOSITE-CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
+                "tag": "GEOLOCATION-!CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
+                "tag": "GEOIP-CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+                "download_detour": "🚀 节点选择"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "DIRECT",
+                "wifi_ssid": [
+                    "702"
+                ]
+            },
+            {
+                "outbound": "DIRECT",
+                "wifi_ssid": [
+                    "604"
+                ]
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "protocol": "dns"
+                    },
+                    {
+                        "port": 53
+                    }
+                ],
+                "outbound": "dns-out"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "type": "logical",
+                "mode": "or",
+                "rules": [
+                    {
+                        "port": 853
+                    },
+                    {
+                        "network": "udp",
+                        "port": 443
+                    },
+                    {
+                        "protocol": "stun"
+                    }
+                ],
+                "outbound": "🛑 全球拦截"
+            },
+            {
+                "clash_mode": "direct",
+                "outbound": "🎯 全球直连"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "🚀 节点选择"
+            }
+        ],
+        "final": "🐟 漏网之鱼",
+        "auto_detect_interface": true,
+        "override_android_vpn": true
     },
-    "cache_file": {
-      "enabled": true,
-      "path": "",
-      "cache_id": "",
-      "store_fakeip": false
+    "dns": {
+        "servers": [
+            {
+                "tag": "remote-dns",
+                "address": "https://8.8.8.8/dns-query",
+                "detour": "🚀 节点选择"
+            },
+            {
+                "tag": "local-dns",
+                "address": "https://120.53.53.53/dns-query",
+                "detour": "🎯 全球直连"
+            },
+            {
+                "tag": "resolver-dns",
+                "address": "223.5.5.5",
+                "detour": "🎯 全球直连"
+            },
+            {
+                "tag": "remote-resolver-dns",
+                "address": "1.1.1.1",
+                "detour": "🚀 节点选择"
+            },
+            {
+                "tag": "fakeip-dns",
+                "address": "fakeip"
+            },
+            {
+                "tag": "block",
+                "address": "rcode://success"
+            }
+        ],
+        "rules": [
+            {
+                "outbound": "any",
+                "disable_cache": true,
+                "server": "local-dns"
+            },
+            {
+                "rule_set": "GEOSITE-CN",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "server": "local-dns"
+            },
+            {
+                "clash_mode": "global",
+                "server": "remote-dns"
+            },
+            
+            {
+                "type": "logical",
+                "mode": "and",
+                "rules": [
+                    {
+                        "domain_suffix": [
+                            ".lan",
+                            ".localdomain",
+                            ".example",
+                            ".invalid",
+                            ".localhost",
+                            ".test",
+                            ".local",
+                            ".home.arpa",
+                            ".msftconnecttest.com",
+                            ".msftncsi.com",
+                            ".emex.top"
+                        ],
+                        "invert": true
+                    },
+                    {
+                        "rule_set": "GEOLOCATION-!CN",
+                        "invert": true
+                    },
+                    {
+                        "rule_set": "GEOIP-CN"
+                    }
+                ],
+                "server": "remote-dns",
+                "client_subnet": "114.114.114.114/24"
+            },
+            {
+                "query_type": [
+                    "A",
+                    "AAAA"
+                ],
+                "server": "fakeip-dns"
+            }
+        ],
+        "fakeip": {
+            "enabled": true,
+            "inet4_range": "198.18.0.1/16",
+            "inet6_range": "fc00::/18"
+        },
+        "independent_cache": true,
+        "strategy": "prefer_ipv4",
+        "final": "remote-dns"
     }
-  }
 }
 
 {% endif %}
