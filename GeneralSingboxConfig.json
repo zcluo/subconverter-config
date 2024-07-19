@@ -210,10 +210,7 @@
                 "clash_mode": "global",
                 "server": "remote-dns"
             },
-            {
-                "clash_mode": "rule",
-                "server": "remote-dns"
-            },
+            
             {
                 "type": "logical",
                 "mode": "and",
