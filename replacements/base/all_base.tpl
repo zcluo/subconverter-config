@@ -621,11 +621,11 @@ enhanced-mode-by-rule = true
                 "outbound": "🛑 全球拦截"
             },
             {
-                "clash_mode": "direct",
+                "clash_mode": "Direct",
                 "outbound": "🎯 全球直连"
             },
             {
-                "clash_mode": "global",
+                "clash_mode": "Global",
                 "outbound": "🚀 节点选择"
             }
         ],
@@ -675,11 +675,11 @@ enhanced-mode-by-rule = true
                 "server": "local-dns"
             },
             {
-                "clash_mode": "direct",
+                "clash_mode": "Direct",
                 "server": "local-dns"
             },
             {
-                "clash_mode": "global",
+                "clash_mode": "Global",
                 "server": "remote-dns"
             },
             
