@@ -325,12 +325,12 @@
                 "outbound": "🚀 节点选择"
             },
             {
-                "clash_mode": "Direct",
-                "outbound": "🎯 全球直连"
+                "clash_mode": "Global",
+                "outbound": "GLOBAL"
             },
             {
-                "clash_mode": "Global",
-                "outbound": "🚀 节点选择"
+                "clash_mode": "Direct",
+                "outbound": "DIRECT"
             }
         ],
         "final": "🐟 漏网之鱼",
