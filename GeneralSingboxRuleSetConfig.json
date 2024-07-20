@@ -323,14 +323,6 @@
             {
                 "rule_set": "GEOLOCATION-!CN",
                 "outbound": "🚀 节点选择"
-            },
-            {
-                "clash_mode": "Global",
-                "outbound": "GLOBAL"
-            },
-            {
-                "clash_mode": "Direct",
-                "outbound": "DIRECT"
             }
         ],
         "final": "🐟 漏网之鱼",
