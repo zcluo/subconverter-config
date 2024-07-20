@@ -115,6 +115,13 @@
                 "download_detour": "🚀 节点选择"
             },
             {
+                "tag": "GEOSITE-INSTAGRAM",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/instagram.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
                 "tag": "GEOSITE-MICROSOFT",
                 "type": "remote",
                 "format": "binary",
@@ -273,6 +280,11 @@
                 "rule_set": "GEOSITE-GITHUB",
                 "outbound": "💻 Github"
             },
+            {
+                "rule_set": "GEOSITE-INSTAGRAM",
+                "outbound": "📸 Instagram"
+            },
+            
             {
                 "rule_set": "GEOSITE-MICROSOFT",
                 "outbound": "🪟 Microsoft"
