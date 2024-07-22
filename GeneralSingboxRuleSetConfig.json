@@ -287,7 +287,7 @@
             
             {
                 "rule_set": "GEOSITE-MICROSOFT",
-                "outbound": "🪟 Microsoft"
+                "outbound": "Ⓜ️ Microsoft"
             },
             {
                 "rule_set": "GEOIP-GOOGLE",
