@@ -299,6 +299,10 @@
                 "outbound": "🚀 节点选择"
             },
             {
+                "source_ip_cidr": "10.0.0.128/32",
+                "outbound": "📑 编译代理"
+            },
+            {
                 "port_range": [
                     "22:22",
                     "53:53",
@@ -465,22 +469,7 @@
                 "type": "logical",
                 "mode": "and",
                 "rules": [
-                    {
-                        "domain_suffix": [
-                            ".lan",
-                            ".localdomain",
-                            ".example",
-                            ".invalid",
-                            ".localhost",
-                            ".test",
-                            ".local",
-                            ".home.arpa",
-                            ".msftconnecttest.com",
-                            ".msftncsi.com",
-                            ".emex.top"
-                        ],
-                        "invert": true
-                    },
+                    
                     {
                         "rule_set": "GEOLOCATION-!CN",
                         "invert": true
