@@ -201,6 +201,13 @@
                 "download_detour": "🚀 节点选择"
             },
             {
+                "tag": "GEOSITE-GOOGLE-CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google@cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
                 "tag": "OPENAI",
                 "type": "remote",
                 "format": "binary",
@@ -370,6 +377,10 @@
                 "outbound": "Ⓜ️ Microsoft"
             },
             {
+                "rule_set": "GEOSITE-GOOGLE-CN",
+                "outbound": "🔎 Google"
+            },
+            {
                 "rule_set": "GEOIP-GOOGLE",
                 "outbound": "🔎 Google"
             },
@@ -462,6 +473,12 @@
             {
                 "rule_set": "GEOSITE-CN",
                 "server": "local-dns",
+                "disable_cache": false,
+                "rewrite_ttl": 1
+            },
+            {
+                "rule_set": "GEOSITE-GOOGLE-CN",
+                "server": "remote-dns",
                 "disable_cache": false,
                 "rewrite_ttl": 1
             },
