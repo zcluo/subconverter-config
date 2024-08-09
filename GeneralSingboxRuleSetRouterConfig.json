@@ -279,7 +279,6 @@
             }
         ],
         "rules": [
-           
             {
                 "type": "logical",
                 "mode": "or",
@@ -360,6 +359,13 @@
                 "outbound": "㊙️ Porn"
             },
             {
+                "domain_suffix": [
+                    "services.googleapis.cn",
+                    "xn--ngstr-lra8j.com"
+                ],
+                "outbound": "🔎 Google"
+            },
+            {
                 "rule_set": "AI@ALL",
                 "outbound": "🤖 OpenAi"
             },
@@ -371,7 +377,6 @@
                 "rule_set": "GEOSITE-INSTAGRAM",
                 "outbound": "📸 Instagram"
             },
-            
             {
                 "rule_set": "GEOSITE-MICROSOFT",
                 "outbound": "Ⓜ️ Microsoft"
@@ -471,22 +476,15 @@
                 "server": "remote-dns"
             },
             {
-                "rule_set": "GEOSITE-GOOGLE-CN",
-                "server": "remote-dns",
-                "disable_cache": false,
-                "rewrite_ttl": 1
-            },
-            {
                 "rule_set": "GEOSITE-CN",
                 "server": "local-dns",
                 "disable_cache": false,
                 "rewrite_ttl": 1
-            },        
+            },
             {
                 "type": "logical",
                 "mode": "and",
                 "rules": [
-                    
                     {
                         "rule_set": "GEOLOCATION-!CN",
                         "invert": true
@@ -496,7 +494,7 @@
                     }
                 ],
                 "server": "remote-dns",
-                "client_subnet": "1.12.12.12/24",
+                "client_subnet": "114.114.114.114/24",
                 "disable_cache": false,
                 "rewrite_ttl": 1
             },
