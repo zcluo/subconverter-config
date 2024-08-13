@@ -14,8 +14,7 @@
         },
         "cache_file": {
             "enabled": true,
-            "store_rdrc": true,
-            "store_fakeip": true
+            "store_rdrc": true
         }
     },
     "ntp": {
@@ -264,10 +263,31 @@
                 "download_detour": "🚀 节点选择"
             },
             {
+                "tag": "GEOSITE-GEOLOCATION-!CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
+                "tag": "GEOSITE-GEOLOCATION-CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
                 "tag": "GEOSITE-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+                "download_detour": "🚀 节点选择"
+            },
+            {
+                "tag": "SB-GEOIP-CN",
+                "type": "remote",
+                "format": "binary",
+                "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
                 "download_detour": "🚀 节点选择"
             },
             {
@@ -303,6 +323,10 @@
             {
                 "clash_mode": "Global",
                 "outbound": "🚀 节点选择"
+            },
+            {
+                "protocol": "bittorrent",
+                "outbound": "🛑 全球拦截"
             },
             {
                 "source_ip_cidr": "10.0.0.128/32",
@@ -452,10 +476,6 @@
                 "detour": "🎯 全球直连"
             },
             {
-                "tag": "fakeip-dns",
-                "address": "fakeip"
-            },
-            {
                 "tag": "block",
                 "address": "rcode://success"
             }
@@ -486,45 +506,21 @@
                 "mode": "and",
                 "rules": [
                     {
-                        "domain_suffix": [
-                            ".lan",
-                            ".localdomain",
-                            ".example",
-                            ".invalid",
-                            ".localhost",
-                            ".test",
-                            ".local",
-                            ".home.arpa",
-                            ".msftconnecttest.com",
-                            ".msftncsi.com",
-                            ".emex.top",
-                            "emex.top"
-                        ],
+                        "rule_set": "GEOSITE-GEOLOCATION-!CN",
                         "invert": true
                     },
                     {
-                        "rule_set": "GEOLOCATION-!CN",
-                        "invert": true
-                    },
-                    {
-                        "rule_set": "GEOIP-CN"
+                        "rule_set": "SB-GEOIP-CN"
                     }
                 ],
                 "server": "remote-dns",
                 "client_subnet": "114.114.114.114/24",
                 "disable_cache": false,
                 "rewrite_ttl": 1
-            },
-            {
-                "query_type": [
-                    "A",
-                    "AAAA"
-                ],
-                "server": "fakeip-dns"
             }
         ],
         "fakeip": {
-            "enabled": true,
+            "enabled": false,
             "inet4_range": "198.18.0.1/16",
             "inet6_range": "fc00::/18"
         },
