@@ -326,7 +326,7 @@
             },
             {
                 "protocol": "bittorrent",
-                "outbound": "🛑 全球拦截"
+                "outbound": "🎯 全球直连"
             },
             {
                 "source_ip_cidr": "10.0.0.128/32",
