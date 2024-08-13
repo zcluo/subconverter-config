@@ -376,11 +376,13 @@
             {
                 "outbound": "any",
                 "disable_cache": true,
-                "server": "local-dns"
+                "server": "local-dns",
+                "rewrite_ttl": 1
             },
             {
                 "rule_set": "GEOSITE-CN",
-                "server": "local-dns"
+                "server": "local-dns",
+                "rewrite_ttl": 1
             },
             {
                 "clash_mode": "Direct",
@@ -421,7 +423,8 @@
                     }
                 ],
                 "server": "remote-dns",
-                "client_subnet": "114.114.114.114/24"
+                "client_subnet": "114.114.114.114/24",
+                "rewrite_ttl": 1
             },
             {
                 "query_type": [
