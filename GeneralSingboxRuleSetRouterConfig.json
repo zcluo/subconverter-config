@@ -524,7 +524,6 @@
             "inet4_range": "198.18.0.1/16",
             "inet6_range": "fc00::/18"
         },
-        "final": "remote-dns",
         "strategy": "prefer_ipv4",
         "disable_cache": false
     }
