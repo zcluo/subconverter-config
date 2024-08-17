@@ -426,7 +426,7 @@
         "servers": [
             {
                 "tag": "remote-dns",
-                "address": "https://8.8.8.8/dns-query,
+                "address": "https://8.8.8.8/dns-query",
                 "strategy": "prefer_ipv4",
                 "detour": "♻️ 自动选择"
             },
