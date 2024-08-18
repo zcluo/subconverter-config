@@ -62,7 +62,7 @@
             "auto_redirect": true,
             "auto_redirect_input_mark": "0x2023",
             "auto_redirect_output_mark": "0x2024",
-            "strict_route": false,
+            "strict_route": true,
             "platform": {
                 "http_proxy": {
                     "enabled": true,
@@ -89,7 +89,7 @@
             "udp_timeout": "5m",
             "stack": "system",
             "sniff": true,
-            "sniff_override_destination": false,
+            "sniff_override_destination": true,
             "domain_strategy": "prefer_ipv4"
         },
         {
@@ -524,6 +524,7 @@
             "inet4_range": "198.18.0.1/16",
             "inet6_range": "fc00::/18"
         },
+        "final": "remote-dns",
         "strategy": "prefer_ipv4",
         "disable_cache": false
     }
