@@ -29,11 +29,23 @@ sniffer:
 tun:
   enable: true
   stack: system
-  dns-hijack: [any:53]
-  auto-route: true
+  device: Meta
+  dns-hijack:
+  - any:53
   auto-detect-interface: true
-  device: mihomo
+  auto-route: true
+  mtu: 9000
   strict-route: true
+  gso: true
+  gso-max-size: 65536
+  auto-redirect: true
+  udp-timeout: 300
+  route-address:
+  - 0.0.0.0/1
+  - 128.0.0.0/1
+  - ::/1
+  - 8000::/1
+  endpoint-independent-nat: false
 
 dns:
   enable: true
