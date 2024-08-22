@@ -1,0 +1,242 @@
+mode: rule
+log-level: info
+ipv6: true
+allow-lan: true
+unified-delay: false
+tcp-concurrent: true
+external-controller-tls: :9090
+secret: ''
+external-ui: ui
+external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+mixed-port: 5330
+socks-port: 2333
+port: 2334
+
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    {
+      HTTP: { ports: [80, 8080-8880] },
+      TLS: { ports: [443, 8443] },
+      QUIC: { ports: [443, 8443] },
+    }
+  skip-domain: ["Mijia Cloud"]
+
+tun:
+  enable: true
+  stack: system
+  dns-hijack: [any:53]
+  auto-route: true
+  auto-detect-interface: true
+  device: mihomo
+  strict-route: true
+
+dns:
+  enable: true
+  prefer-h3: true
+  ipv6: true
+  listen: 0.0.0.0:1053
+  fake-ip-range: 198.18.0.1/16
+  enhanced-mode: fake-ip
+  fake-ip-filter: [rule-set:fakeip-filter]
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+rule-providers:
+  fakeip-filter:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/fakeip-filter.mrs"
+    interval: 86400
+
+  ads:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/ads.mrs"
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/private.mrs"
+    interval: 86400
+
+  microsoft-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/microsoft-cn.mrs"
+    interval: 86400
+
+  apple-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/apple-cn.mrs"
+    interval: 86400
+
+  google-cn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/google-cn.mrs"
+    interval: 86400
+
+  youtube:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/youtube.mrs"
+    interval: 86400
+
+  ai:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/ai.mrs"
+    interval: 86400
+
+  netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/netflix.mrs"
+    interval: 86400
+
+  netflixip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/netflixip.mrs"
+    interval: 86400
+
+  category-porn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-porn.mrs"
+    interval: 86400
+
+  bing:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs"
+    interval: 86400
+
+  twitter:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs"
+    interval: 86400
+
+  twitterip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs"
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
+    interval: 86400
+
+  googleip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"
+    interval: 86400
+
+  facebook:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.mrs"
+    interval: 86400
+
+  facebookip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs"
+    interval: 86400
+
+  tiktoknotcn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok@!cn.mrs"
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/proxy.mrs"
+    interval: 86400
+
+  cn:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/cn.mrs"
+    interval: 86400
+
+  telegramip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/telegramip.mrs"
+    interval: 86400
+
+  privateip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/privateip.mrs"
+    interval: 86400
+
+  cnip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/clash-ruleset/cnip.mrs"
+    interval: 86400
+
+rules:
+  - RULE-SET,ads,🛑 全球拦截
+  - RULE-SET,category-porn,㊙️ Porn
+  - RULE-SET,private,🎯 全球直连
+  - RULE-SET,microsoft-cn,Ⓜ️ Microsoft
+  - RULE-SET,apple-cn,🍎 Apple
+  - RULE-SET,youtube,🎞️ YouTube
+  - RULE-SET,google-cn,🔎 Google
+  - RULE-SET,google,🔎 Google
+  - RULE-SET,googleip,🔎 Google,no-resolve
+  - RULE-SET,facebook,📖 Facebook
+  - RULE-SET,facebookip,📖 Facebook,no-resolve
+  - RULE-SET,tiktoknotcn,🎥 TikTok
+  - RULE-SET,ai,🤖 OpenAi
+  - RULE-SET,netflix,📺 Netflix
+  - RULE-SET,netflixip,📺 Netflix,no-resolve
+  - RULE-SET,twitter,🦜 Twitter
+  - RULE-SET,twitterip,🦜 Twitter,no-resolve
+  - RULE-SET,telegramip,📲 Telegram,no-resolve
+  - RULE-SET,proxy,🚀 节点选择
+  - RULE-SET,cn,🎯 全球直连
+  - RULE-SET,privateip,🎯 全球直连,no-resolve
+  - RULE-SET,cnip,🎯 全球直连,no-resolve
+  - MATCH,🐟 漏网之鱼
