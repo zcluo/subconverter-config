@@ -301,23 +301,22 @@ rules:
   - RULE-SET,github,💻 Github
   - RULE-SET,google-cn,🔎 Google
   - RULE-SET,google,🔎 Google
-  - RULE-SET,googleip,🔎 Google,no-resolve
+  - RULE-SET,googleip,🔎 Google
   - RULE-SET,facebook,📖 Facebook
-  - RULE-SET,facebookip,📖 Facebook,no-resolve
+  - RULE-SET,facebookip,📖 Facebook
   - RULE-SET,tiktoknotcn,🎥 TikTok
   - RULE-SET,openai,🤖 OpenAi
-  - RULE-SET,aiip,🤖 OpenAi,no-resolve
+  - RULE-SET,aiip,🤖 OpenAi
   - RULE-SET,ai,🤖 OpenAi
   - RULE-SET,netflix,📺 Netflix
-  - RULE-SET,netflixip,📺 Netflix,no-resolve
+  - RULE-SET,netflixip,📺 Netflix
   - RULE-SET,twitter,🦜 Twitter
-  - RULE-SET,twitterip,🦜 Twitter,no-resolve
+  - RULE-SET,twitterip,🦜 Twitter
   - RULE-SET,telegram,📲 Telegram
-  - RULE-SET,telegramip,📲 Telegram,no-resolve
+  - RULE-SET,telegramip,📲 Telegram
   - RULE-SET,geolocationnotcn,🚀 节点选择
   - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,cn,🎯 全球直连
   - RULE-SET,geolocationcn,🎯 全球直连
-  - RULE-SET,privateip,🎯 全球直连,no-resolve
-  - RULE-SET,cnip,🎯 全球直连,no-resolve
-
+  - RULE-SET,privateip,🎯 全球直连
+  - RULE-SET,cnip,🎯 全球直连
