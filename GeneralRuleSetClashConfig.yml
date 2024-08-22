@@ -46,6 +46,8 @@ dns:
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://8.8.8.8/dns-query
+    - https://1.1.1.1/dns-query
 
 rule-providers:
   fakeip-filter:
@@ -181,6 +183,13 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok@!cn.mrs"
     interval: 86400
 
+  github:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
+    interval: 86400
+
   proxy:
     type: http
     behavior: domain
@@ -223,6 +232,7 @@ rules:
   - RULE-SET,microsoft-cn,Ⓜ️ Microsoft
   - RULE-SET,apple-cn,🍎 Apple
   - RULE-SET,youtube,🎞️ YouTube
+  - RULE-SET,github,💻 Github
   - RULE-SET,google-cn,🔎 Google
   - RULE-SET,google,🔎 Google
   - RULE-SET,googleip,🔎 Google,no-resolve
