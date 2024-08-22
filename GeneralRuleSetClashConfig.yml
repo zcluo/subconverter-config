@@ -249,4 +249,4 @@ rules:
   - RULE-SET,cn,🎯 全球直连
   - RULE-SET,privateip,🎯 全球直连,no-resolve
   - RULE-SET,cnip,🎯 全球直连,no-resolve
-  - MATCH,🐟 漏网之鱼
+
