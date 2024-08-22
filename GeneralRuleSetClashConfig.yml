@@ -46,6 +46,8 @@ dns:
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+    - https://1.1.1.1/dns-query
+    - https://8.8.4.4/dns-query
 
 
 rule-providers:
