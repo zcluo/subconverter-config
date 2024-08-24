@@ -42,7 +42,7 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: [rule-set:fakeip-filter]
+  fake-ip-filter: ['rule-set:fakeip-filter', '+.emex.top', '*.emex.top', 'emex.top']
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
