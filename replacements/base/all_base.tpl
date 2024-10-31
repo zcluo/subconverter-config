@@ -481,7 +481,7 @@ enhanced-mode-by-rule = true
             "external_ui": "",
             "secret": "",
             "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-            "external_ui_download_detour": "节点选择",
+            "external_ui_download_detour": "🚀 节点选择",
             "default_mode": "Enhanced"
         },
         "cache_file": {
