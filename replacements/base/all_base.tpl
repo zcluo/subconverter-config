@@ -532,7 +532,6 @@ enhanced-mode-by-rule = true
             ],
             "mtu": 9000,
             "auto_route": true,
-            "gso": true,
             "strict_route": true,
             "endpoint_independent_nat": true,
             "stack": "system",
@@ -556,24 +555,39 @@ enhanced-mode-by-rule = true
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-                "download_detour": "🚀 节点选择"
+                "download_detour": "🚀 节点选择",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOLOCATION-!CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
-                "download_detour": "🚀 节点选择"
+                "download_detour": "🚀 节点选择",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOIP-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-                "download_detour": "🚀 节点选择"
+                "download_detour": "🚀 节点选择",
+                "update_interval": "3d"
             }
         ],
         "rules": [
+            {
+                "inbound": "tun",
+                "action": "sniff",
+                "sniffer": [
+                  "dns",
+                  "bittorrent",
+                  "http",
+                  "tls",
+                  "quic",
+                  "dtls"
+                ]
+              },
             {
                 "outbound": "DIRECT",
                 "wifi_ssid": [
@@ -597,10 +611,15 @@ enhanced-mode-by-rule = true
                         "port": 53
                     }
                 ],
-                "outbound": "dns-out"
+                "action": "hijack-dns"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
             },
             {
                 "ip_is_private": true,
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
@@ -618,14 +637,16 @@ enhanced-mode-by-rule = true
                         "protocol": "stun"
                     }
                 ],
-                "outbound": "🛑 全球拦截"
+                "action": "reject",
             },
             {
                 "clash_mode": "Direct",
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
                 "clash_mode": "Global",
+                "action": "route",
                 "outbound": "🚀 节点选择"
             }
         ],
@@ -667,19 +688,23 @@ enhanced-mode-by-rule = true
         "rules": [
             {
                 "outbound": "any",
+                "action": "route",
                 "disable_cache": true,
                 "server": "local-dns"
             },
             {
                 "rule_set": "GEOSITE-CN",
+                "action": "route",
                 "server": "local-dns"
             },
             {
                 "clash_mode": "Direct",
+                "action": "route",
                 "server": "local-dns"
             },
             {
                 "clash_mode": "Global",
+                "action": "route",
                 "server": "remote-dns"
             },
             
@@ -711,6 +736,7 @@ enhanced-mode-by-rule = true
                         "rule_set": "GEOIP-CN"
                     }
                 ],
+                "action": "route",
                 "server": "remote-dns",
                 "client_subnet": "114.114.114.114/24"
             },
@@ -719,6 +745,7 @@ enhanced-mode-by-rule = true
                     "A",
                     "AAAA"
                 ],
+                "action": "route",
                 "server": "fakeip-dns"
             }
         ],
