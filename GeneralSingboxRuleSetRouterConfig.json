@@ -55,7 +55,6 @@
                 "fdfe:dcba:9876::1/126"
             ],
             "mtu": 9000,
-            "gso": true,
             "auto_route": true,
             "iproute2_table_index": 2022,
             "iproute2_rule_index": 9000,
@@ -141,164 +140,199 @@
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "OPENAI@ADS",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai@ads.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "CATEGORY-PORN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-porn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "AI@ALL",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-GITHUB",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-INSTAGRAM",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/instagram.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-MICROSOFT",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOIP-GOOGLE",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-GOOGLE",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-GOOGLE-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google@cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "OPENAI",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOIP-NETFLIX",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/netflix.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-NETFLIX",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-YOUTUBE",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOIP-TELEGRAM",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-TELEGRAM",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-PRIVATE",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOLOCATION-!CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-GEOLOCATION-!CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-!cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-GEOLOCATION-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOSITE-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "SB-GEOIP-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             },
             {
                 "tag": "GEOIP-CN",
                 "type": "remote",
                 "format": "binary",
                 "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-                "download_detour": "🎯 全球直连"
+                "download_detour": "🎯 全球直连",
+                "update_interval": "3d"
             }
         ],
         "rules": [
+            {
+                "inbound": "tun-in",
+                "action": "sniff",
+                "sniffer": [
+                    "dns",
+                    "bittorrent",
+                    "http",
+                    "tls",
+                    "quic",
+                    "dtls"
+                ]
+            },
             {
                 "type": "logical",
                 "mode": "or",
@@ -310,26 +344,30 @@
                         "port": 53
                     }
                 ],
-                "outbound": "dns-out"
+                "action": "hijack-dns"
             },
             {
-                "inbound": "dns-in",
-                "outbound": "dns-out"
+                "protocol": "dns",
+                "action": "hijack-dns"
             },
             {
                 "clash_mode": "Direct",
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
                 "clash_mode": "Global",
+                "action": "route",
                 "outbound": "🚀 节点选择"
             },
             {
                 "protocol": "bittorrent",
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
                 "source_ip_cidr": "10.0.0.128/32",
+                "action": "route",
                 "outbound": "📑 编译代理"
             },
             {
@@ -351,6 +389,7 @@
                     "9418:9418"
                 ],
                 "invert": true,
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
@@ -368,18 +407,19 @@
                         "protocol": "stun"
                     }
                 ],
-                "outbound": "🛑 全球拦截"
+                "action": "reject"
             },
             {
                 "rule_set": "ADS",
-                "outbound": "🛑 全球拦截"
+                "action": "reject"
             },
             {
                 "rule_set": "OPENAI@ADS",
-                "outbound": "🛑 全球拦截"
+                "action": "reject"
             },
             {
                 "rule_set": "CATEGORY-PORN",
+                "action": "route",
                 "outbound": "㊙️ Porn"
             },
             {
@@ -387,58 +427,72 @@
                     "services.googleapis.cn",
                     "xn--ngstr-lra8j.com"
                 ],
+                "action": "route",
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "AI@ALL",
+                "action": "route",
                 "outbound": "🤖 OpenAi"
             },
             {
                 "rule_set": "GEOSITE-GITHUB",
+                "action": "route",
                 "outbound": "💻 Github"
             },
             {
                 "rule_set": "GEOSITE-INSTAGRAM",
+                "action": "route",
                 "outbound": "📸 Instagram"
             },
             {
                 "rule_set": "GEOSITE-MICROSOFT",
+                "action": "route",
                 "outbound": "Ⓜ️ Microsoft"
             },
             {
                 "rule_set": "GEOSITE-GOOGLE-CN",
+                "action": "route",
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "GEOIP-GOOGLE",
+                "action": "route",
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "GEOSITE-GOOGLE",
+                "action": "route",
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "OPENAI",
+                "action": "route",
                 "outbound": "🤖 OpenAi"
             },
             {
                 "rule_set": "GEOIP-NETFLIX",
+                "action": "route",
                 "outbound": "📺 Netflix"
             },
             {
                 "rule_set": "GEOSITE-NETFLIX",
+                "action": "route",
                 "outbound": "📺 Netflix"
             },
             {
                 "rule_set": "GEOSITE-YOUTUBE",
+                "action": "route",
                 "outbound": "🎞️ YouTube"
             },
             {
                 "rule_set": "GEOIP-TELEGRAM",
+                "action": "route",
                 "outbound": "📲 Telegram"
             },
             {
                 "rule_set": "GEOSITE-TELEGRAM",
+                "action": "route",
                 "outbound": "📲 Telegram"
             },
             {
@@ -446,14 +500,17 @@
                     "GEOSITE-CN",
                     "GEOIP-CN"
                 ],
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
                 "rule_set": "GEOSITE-PRIVATE",
+                "action": "route",
                 "outbound": "🎯 全球直连"
             },
             {
                 "rule_set": "GEOLOCATION-!CN",
+                "action": "route",
                 "outbound": "🚀 节点选择"
             }
         ],
@@ -483,20 +540,24 @@
         "rules": [
             {
                 "outbound": "any",
+                "action": "route",
                 "server": "local-dns",
                 "disable_cache": false,
                 "rewrite_ttl": 1
             },
             {
                 "clash_mode": "Direct",
+                "action": "route",
                 "server": "local-dns"
             },
             {
                 "clash_mode": "Global",
+                "action": "route",
                 "server": "remote-dns"
             },
             {
                 "rule_set": "GEOSITE-CN",
+                "action": "route",
                 "server": "local-dns",
                 "disable_cache": false,
                 "rewrite_ttl": 1
@@ -513,6 +574,7 @@
                         "rule_set": "SB-GEOIP-CN"
                     }
                 ],
+                "action": "route",
                 "server": "remote-dns",
                 "client_subnet": "114.114.114.114/24",
                 "disable_cache": false,
