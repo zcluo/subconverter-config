@@ -587,7 +587,7 @@
             "inet6_range": "fc00::/18"
         },
         "final": "remote-dns",
-        "strategy": "prefer_ipv4",
+        "reverse_mapping": true,
         "disable_cache": false
     }
 }
