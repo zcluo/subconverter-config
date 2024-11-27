@@ -303,13 +303,11 @@
                         "port": 53
                     }
                 ],
-                "action": "hijack-dns",
-                "udp_connect": true
+                "action": "hijack-dns"
             },
             {
                 "protocol": "dns",
-                "action": "hijack-dns",
-                "udp_connect": true
+                "action": "hijack-dns"
             },
             {
                 "clash_mode": "Direct",
