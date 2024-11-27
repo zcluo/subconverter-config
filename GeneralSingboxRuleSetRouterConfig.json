@@ -336,30 +336,36 @@
                         "port": 53
                     }
                 ],
-                "action": "hijack-dns"
+                "action": "hijack-dns",
+                "udp_connect": true
             },
             {
                 "protocol": "dns",
-                "action": "hijack-dns"
+                "action": "hijack-dns",
+                "udp_connect": true
             },
             {
                 "clash_mode": "Direct",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
                 "clash_mode": "Global",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🚀 节点选择"
             },
             {
                 "protocol": "bittorrent",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
                 "source_ip_cidr": "10.0.0.128/32",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📑 编译代理"
             },
             {
@@ -382,6 +388,7 @@
                 ],
                 "invert": true,
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
@@ -399,19 +406,23 @@
                         "protocol": "stun"
                     }
                 ],
-                "action": "reject"
+                "action": "reject",
+                "no_drop": false
             },
             {
                 "rule_set": "ADS",
-                "action": "reject"
+                "action": "reject",
+                "no_drop": false
             },
             {
                 "rule_set": "OPENAI@ADS",
-                "action": "reject"
+                "action": "reject",
+                "no_drop": false
             },
             {
                 "rule_set": "CATEGORY-PORN",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "㊙️ Porn"
             },
             {
@@ -420,71 +431,85 @@
                     "xn--ngstr-lra8j.com"
                 ],
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "AI@ALL",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🤖 OpenAi"
             },
             {
                 "rule_set": "GEOSITE-GITHUB",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "💻 Github"
             },
             {
                 "rule_set": "GEOSITE-INSTAGRAM",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📸 Instagram"
             },
             {
                 "rule_set": "GEOSITE-MICROSOFT",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "Ⓜ️ Microsoft"
             },
             {
                 "rule_set": "GEOSITE-GOOGLE-CN",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "GEOIP-GOOGLE",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "GEOSITE-GOOGLE",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🔎 Google"
             },
             {
                 "rule_set": "OPENAI",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🤖 OpenAi"
             },
             {
                 "rule_set": "GEOIP-NETFLIX",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📺 Netflix"
             },
             {
                 "rule_set": "GEOSITE-NETFLIX",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📺 Netflix"
             },
             {
                 "rule_set": "GEOSITE-YOUTUBE",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎞️ YouTube"
             },
             {
                 "rule_set": "GEOIP-TELEGRAM",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📲 Telegram"
             },
             {
                 "rule_set": "GEOSITE-TELEGRAM",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "📲 Telegram"
             },
             {
@@ -493,16 +518,19 @@
                     "GEOIP-CN"
                 ],
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
                 "rule_set": "GEOSITE-PRIVATE",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
                 "rule_set": "GEOLOCATION-!CN",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🚀 节点选择"
             }
         ],
@@ -573,7 +601,6 @@
                 "rewrite_ttl": 1
             }
         ],
-        
         "fakeip": {
             "enabled": false,
             "inet4_range": "198.18.0.1/16",
