@@ -323,15 +323,7 @@
         "rules": [
             {
                 "inbound": "tun-in",
-                "action": "sniff",
-                "sniffer": [
-                    "dns",
-                    "bittorrent",
-                    "http",
-                    "tls",
-                    "quic",
-                    "dtls"
-                ]
+                "action": "sniff"
             },
             {
                 "type": "logical",
