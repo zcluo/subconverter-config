@@ -59,7 +59,7 @@
             "set_system_proxy": false
         },
         {
-            "tag": "tun",
+            "tag": "tun-in",
             "type": "tun",
             "interface_name": "singbox",
             "address": [
@@ -273,16 +273,8 @@
         ],
         "rules": [
             {
-                "inbound": "tun",
-                "action": "sniff",
-                "sniffer": [
-                    "dns",
-                    "bittorrent",
-                    "http",
-                    "tls",
-                    "quic",
-                    "dtls"
-                ]
+                "inbound": "tun-in",
+                "action": "sniff"
             },
             {
                 "outbound": "DIRECT",
