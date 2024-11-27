@@ -107,14 +107,18 @@
             {
                 "inbound": "tun-in",
                 "action": "sniff"
-              },
+            },
             {
+                "action": "route",
+                "udp_connect": true,
                 "outbound": "DIRECT",
                 "wifi_ssid": [
                     "702"
                 ]
             },
             {
+                "action": "route",
+                "udp_connect": true,
                 "outbound": "DIRECT",
                 "wifi_ssid": [
                     "604"
@@ -131,15 +135,18 @@
                         "port": 53
                     }
                 ],
-                "action": "hijack-dns"
+                "action": "hijack-dns",
+                "udp_connect": true
             },
             {
                 "protocol": "dns",
-                "action": "hijack-dns"
+                "action": "hijack-dns",
+                "udp_connect": true
             },
             {
                 "ip_is_private": true,
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
@@ -157,16 +164,19 @@
                         "protocol": "stun"
                     }
                 ],
-                "action": "reject"
+                "action": "reject",
+                "no_drop": false
             },
             {
                 "clash_mode": "Direct",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🎯 全球直连"
             },
             {
                 "clash_mode": "Global",
                 "action": "route",
+                "udp_connect": true,
                 "outbound": "🚀 节点选择"
             }
         ],
@@ -231,7 +241,6 @@
                 "action": "route",
                 "server": "remote-dns"
             },
-            
             {
                 "type": "logical",
                 "mode": "and",
