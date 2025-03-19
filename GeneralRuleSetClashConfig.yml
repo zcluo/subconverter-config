@@ -8,7 +8,7 @@ external-controller: :9090
 external-controller-tls: :19090
 secret: ''
 external-ui: ui
-external-ui-url: https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 find-process-mode: strict
 global-client-fingerprint: chrome
 
