@@ -293,6 +293,7 @@ rule-providers:
     interval: 86400
 
 rules:
+  - SRC-IP-CIDR,10.0.0.128/32,🚀 节点选择
   - RULE-SET,ads,🛑 全球拦截
   - RULE-SET,category-porn,㊙️ Porn
   - RULE-SET,private,🎯 全球直连
