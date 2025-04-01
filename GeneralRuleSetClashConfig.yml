@@ -286,6 +286,7 @@ rule-providers:
 
 rules:
   - SRC-IP-CIDR,10.0.0.128/32,📝 Compiler
+  - NOT,((DST-PORT,21,22,53,80,110,143,194,443,465,853,873,993,995,5222,8080,8443,9418,2334,2336,12334,12336)),🎯 全球直连
   - RULE-SET,ads,🛑 全球拦截
   - RULE-SET,category-porn,㊙️ Porn
   - RULE-SET,private,🎯 全球直连
