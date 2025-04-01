@@ -6,7 +6,7 @@ unified-delay: false
 tcp-concurrent: true
 external-controller: :9090
 external-controller-tls: :19090
-secret: ''
+secret: ""
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 find-process-mode: strict
@@ -43,13 +43,13 @@ dns:
   listen: 0.0.0.0:1053
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
-  fake-ip-filter: ['rule-set:fakeip-filter', '+.emex.top', '*.emex.top', 'emex.top']
+  fake-ip-filter:
+    ["rule-set:fakeip-filter", "+.emex.top", "*.emex.top", "emex.top"]
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
     - https://1.1.1.1/dns-query
     - https://8.8.4.4/dns-query
-
 
 rule-providers:
   fakeip-filter:
@@ -108,20 +108,12 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
     interval: 86400
 
-  openai:
+  category-ai-!cn:
     type: http
     behavior: domain
     format: mrs
-    path: ./rules/openai.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.mrs"
-    interval: 86400
-
-  ai:
-    type: http
-    behavior: domain
-    format: mrs
-    path: ./rules/ai.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/ai.mrs"
+    path: ./rules/category-ai-!cn.mrs
+    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs"
     interval: 86400
 
   aiip:
@@ -307,9 +299,8 @@ rules:
   - RULE-SET,facebook,📖 Facebook
   - RULE-SET,facebookip,📖 Facebook
   - RULE-SET,tiktoknotcn,🎥 TikTok
-  - RULE-SET,openai,🤖 OpenAi
+  - RULE-SET,category-ai-!cn,🤖 OpenAi
   - RULE-SET,aiip,🤖 OpenAi
-  - RULE-SET,ai,🤖 OpenAi
   - RULE-SET,netflix,📺 Netflix
   - RULE-SET,netflixip,📺 Netflix
   - RULE-SET,twitter,🦜 Twitter
