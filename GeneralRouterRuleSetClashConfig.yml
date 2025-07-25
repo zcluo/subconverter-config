@@ -4,8 +4,8 @@ ipv6: true
 allow-lan: true
 unified-delay: false
 tcp-concurrent: true
-external-controller: 0.0.0.0:29090
-external-controller-tls: 0.0.0.0:9090
+external-controller: '[::]:29090'
+external-controller-tls: '[::]:9090'
 secret: ""
 tls:
   certificate: "/etc/ssl/certs/cert.pem"
