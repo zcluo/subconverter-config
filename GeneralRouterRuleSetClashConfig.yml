@@ -1,5 +1,5 @@
 mode: rule
-log-level: info
+log-level: error
 ipv6: true
 allow-lan: true
 unified-delay: false
@@ -8,8 +8,8 @@ external-controller: '[::]:29090'
 external-controller-tls: '[::]:9090'
 secret: ""
 tls:
-  certificate: "/etc/ssl/certs/cert.pem"
-  private-key: "/etc/ssl/certs/cert.key"
+  certificate: "cert.pem"
+  private-key: "cert.key"
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
 find-process-mode: strict
