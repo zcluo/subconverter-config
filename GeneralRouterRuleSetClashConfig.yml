@@ -2,7 +2,7 @@ mode: rule
 log-level: error
 ipv6: true
 allow-lan: true
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
 external-controller: '[::]:29090'
 external-controller-tls: '[::]:9090'
@@ -12,102 +12,125 @@ tls:
   private-key: "cert.key"
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
-find-process-mode: strict
-global-client-fingerprint: chrome
-
-
-
+find-process-mode: off
 mixed-port: 2334
 socks-port: 2336
-port: 2335
 
+port: 2335
 authentication:
   - "mix:1234567890"
 
+keep-alive-idle: 600
+keep-alive-interval: 60
+redir-port: 7891
+tproxy-port: 7892
+geodata-mode: false
+geodata-loader: standard
 
 geox-url:
-  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
-  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
-  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
-
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb
+  asn: https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country-asn.mmdb
 geo-auto-update: true
-geo-update-interval: 24
-
+geo-update-interval: 2
 profile:
   store-selected: true
-
   store-fake-ip: true
-
 sniffer:
   enable: true
   parse-pure-ip: true
   override-destination: true
+  force-dns-mapping: true
+  skip-domain:
+    - emex.top
+    - +.emex.top
+    - '*.emex.top'
   sniff:
-    {
-      HTTP: { ports: [80, 8080-8880], override-destination: true },
-      TLS: { ports: [443, 8443], override-destination: true },
-      QUIC: { ports: [443, 8443], override-destination: true },
-    }
-  skip-domain: ["Mijia Cloud", "emex.top", "+.emex.top"]
-
+    HTTP:
+      port:
+        - "80"
+        - 8080-8880
+      override-destination: true
+    TLS:
+      port:
+        - "443"
+        - "8443"
+      override-destination: true
+    QUIC:
+      port:
+        - "443"
+        - "8443"
+      override-destination: true
 tun:
   enable: true
-  stack: system
-  dns-hijack: [any:53]
-  auto-route: true
-  auto-detect-interface: true
-  device: mihomo
+  stack: mixed
+  auto-route: false
+  auto-detect-interface: false
+  device: nikki
   strict-route: true
-
+  dns-hijack:
+    - tcp://any:53
+    - udp://any:53
+  auto-redirect: false
+  disable-icmp-forwarding: true
 dns:
   enable: true
   prefer-h3: true
   ipv6: true
   ipv6-timeout: 400
   cache-algorithm: arc
-  listen: 0.0.0.0:1053
+  listen: '[::]:1053'
   fake-ip-range: 198.18.0.1/16
-  enhanced-mode: redir-host
-  fake-ip-filter-mode: blacklist
-  fake-ip-filter:
-    ["rule-set:fakeip-filter", "geosite:fakeip-filter", "+.emex.top", "*.emex.top", "emex.top"]
-  respect-rules: false
-  default-nameserver:
-    - 114.114.114.114
-    - 8.8.8.8
-    - tls://1.12.12.12:853
-    - tls://223.5.5.5:853
-    - system
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://1.1.1.1/dns-query
-    - https://8.8.4.4/dns-query
-  fallback:
-    - tls://1.1.1.1:853
-    - tls://8.8.8.8:853
-
-  proxy-server-nameserver:
-    - https://dns.google/dns-query
-    - tls://one.one.one.one
-
+  enhanced-mode: fake-ip
+  fake-ip-filter-mode: rule
+  respect-rules: true
   fallback-filter:
     geoip: true
     geoip-code: CN
- 
     geosite:
       - gfw
       - geolocation-!cn
     ipcidr:
       - 240.0.0.0/4
-
+  fake-ip-range6: fdfe:dcba:9876::1/64
+  fake-ip-ttl: 1
+  fake-ip-filter:
+    - GEOSITE,geolocation-!cn,fake-ip
+    - DOMAIN-SUFFIX,emex.top,real-ip
+    - GEOSITE,cn,real-ip
+    - MATCH,real-ip
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+    - 2400:3200::1
+    - 2001:4860:4860::8888
+  proxy-server-nameserver:
+    - tls://1.1.1.1
+    - tls://8.8.8.8
+  direct-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+  nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+    - 1.1.1.1
+    - 8.8.4.4
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  fallback:
+    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  direct-nameserver-follow-policy: true
   nameserver-policy:
-
-    "geosite:cn,private,apple":
-      - https://doh.pub/dns-query
+    geosite:private:
       - https://dns.alidns.com/dns-query
-    "geosite:category-ads-all": rcode://success
-    "geosite:geolocation-!cn": 
+      - https://doh.pub/dns-query
+    geosite:cn:
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    geosite:geolocation-!cn:
       - https://1.1.1.1/dns-query
       - https://8.8.8.8/dns-query
 rule-providers:
@@ -116,262 +139,234 @@ rule-providers:
     behavior: domain
     format: mrs
     path: ./rules/fakeip-filter.mrs
-    url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/fakeip-filter.mrs"
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/fakeip-filter.mrs
     interval: 86400
-
   ads:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/category-ads-all.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs
     interval: 86400
-
   private:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/private.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
     interval: 86400
-
   microsoft-cn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/microsoft@cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs
     interval: 86400
-
   apple-cn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/apple@cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs
     interval: 86400
-
   google-cn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/google@cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google@cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google@cn.mrs
     interval: 86400
-
   youtube:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/youtube.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs
     interval: 86400
-
-
   category-ai-!cn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/category-ai-!cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs
     interval: 86400
-
   aiip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/aiip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/ai.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/ai.mrs
     interval: 86400
-
   netflix:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/netflix.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs
     interval: 86400
-
   netflixip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/netflixip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs
     interval: 86400
-
   category-porn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/category-porn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-porn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-porn.mrs
     interval: 86400
-
   bing:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/bing.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bing.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bing.mrs
     interval: 86400
-
   twitter:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/twitter.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs
     interval: 86400
-
   twitterip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/twitterip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs
     interval: 86400
-
   google:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/google.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs
     interval: 86400
-
   googleip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/googleip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs
     interval: 86400
-
   facebook:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/facebook.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/facebook.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/facebook.mrs
     interval: 86400
-
   facebookip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/facebookip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/facebook.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/facebook.mrs
     interval: 86400
-
   tiktoknotcn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/tiktok@!cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok@!cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok@!cn.mrs
     interval: 86400
-
   github:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/github.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs
     interval: 86400
-
   gfw:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/gfw.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/gfw.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/gfw.mrs
     interval: 86400
-
   cn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs
     interval: 86400
-
   cnip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/cnip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs
     interval: 86400
-
   telegram:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/telegram.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
     interval: 86400
-
   telegramip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/telegramip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs
     interval: 86400
-
   privateip:
     type: http
     behavior: ipcidr
     format: mrs
     path: ./rules/privateip.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs
     interval: 86400
-
   geolocationnotcn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/geolocation-!cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
     interval: 86400
-
   geolocationcn:
     type: http
     behavior: domain
     format: mrs
     path: ./rules/geolocation-cn.mrs
-    url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-cn.mrs"
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-cn.mrs
     interval: 86400
 
 rules:
-  - SRC-IP-CIDR,10.0.0.128/32,📝 Compiler
-  - DOMAIN-SUFFIX,emex.top,🎯 全球直连
-  - NOT,((DST-PORT,21/22/53/80/110/123/143/194/443/465/853/873/993/995/5222/8080/8443/9418/2334/2336/12334/12336)),🎯 全球直连
-  - RULE-SET,ads,🛑 全球拦截
+  - "SRC-IP-CIDR,10.0.0.128/32,\U0001F4DD Compiler"
+  - "DOMAIN-SUFFIX,emex.top,\U0001F3AF 全球直连"
+  - "NOT,((DST-PORT,21/22/53/80/110/123/143/194/443/465/853/873/993/995/5222/8080/8443/9418/2334/2336/12334/12336)),\U0001F3AF 全球直连"
+  - "RULE-SET,ads,\U0001F6D1 全球拦截"
   - RULE-SET,category-porn,㊙️ Porn
-  - RULE-SET,private,🎯 全球直连
+  - "RULE-SET,private,\U0001F3AF 全球直连"
   - RULE-SET,microsoft-cn,Ⓜ️ Microsoft
-  - RULE-SET,apple-cn,🍎 Apple
-  - RULE-SET,youtube,🎞️ YouTube
-  - RULE-SET,github,💻 Github
-  - RULE-SET,google-cn,🔎 Google
-  - RULE-SET,google,🔎 Google
-  - RULE-SET,googleip,🔎 Google
-  - RULE-SET,facebook,📖 Facebook
-  - RULE-SET,facebookip,📖 Facebook
-  - RULE-SET,tiktoknotcn,🎥 TikTok
-  - RULE-SET,category-ai-!cn,🤖 OpenAi
-  - RULE-SET,aiip,🤖 OpenAi
-  - RULE-SET,netflix,📺 Netflix
-  - RULE-SET,netflixip,📺 Netflix
-  - RULE-SET,twitter,🦜 Twitter
-  - RULE-SET,twitterip,🦜 Twitter
-  - RULE-SET,telegram,📲 Telegram
-  - RULE-SET,telegramip,📲 Telegram
-  - RULE-SET,geolocationnotcn,🚀 节点选择
-  - RULE-SET,gfw,🚀 节点选择
-  - RULE-SET,cn,🎯 全球直连
-  - RULE-SET,geolocationcn,🎯 全球直连
-  - RULE-SET,privateip,🎯 全球直连
-  - RULE-SET,cnip,🎯 全球直连
+  - "RULE-SET,apple-cn,\U0001F34E Apple"
+  - "RULE-SET,youtube,\U0001F39E️ YouTube"
+  - "RULE-SET,github,\U0001F4BB Github"
+  - "RULE-SET,google-cn,\U0001F50E Google"
+  - "RULE-SET,google,\U0001F50E Google"
+  - "RULE-SET,googleip,\U0001F50E Google"
+  - "RULE-SET,facebook,\U0001F4D6 Facebook"
+  - "RULE-SET,facebookip,\U0001F4D6 Facebook"
+  - "RULE-SET,tiktoknotcn,\U0001F3A5 TikTok"
+  - "RULE-SET,category-ai-!cn,\U0001F916 OpenAi"
+  - "RULE-SET,aiip,\U0001F916 OpenAi"
+  - "RULE-SET,netflix,\U0001F4FA Netflix"
+  - "RULE-SET,netflixip,\U0001F4FA Netflix"
+  - "RULE-SET,twitter,\U0001F99C Twitter"
+  - "RULE-SET,twitterip,\U0001F99C Twitter"
+  - "RULE-SET,telegram,\U0001F4F2 Telegram"
+  - "RULE-SET,telegramip,\U0001F4F2 Telegram"
+  - "RULE-SET,geolocationnotcn,\U0001F680 节点选择"
+  - "RULE-SET,gfw,\U0001F680 节点选择"
+  - "RULE-SET,cn,\U0001F3AF 全球直连"
+  - "RULE-SET,geolocationcn,\U0001F3AF 全球直连"
+  - "RULE-SET,privateip,\U0001F3AF 全球直连"
+  - "RULE-SET,cnip,\U0001F3AF 全球直连"
+  - "MATCH,\U0001F41F 漏网之鱼"
