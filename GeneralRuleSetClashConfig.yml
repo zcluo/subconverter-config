@@ -1,55 +1,130 @@
 mode: rule
-log-level: info
+log-level: error
 ipv6: true
 allow-lan: true
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
-external-controller: :9090
-external-controller-tls: :19090
+external-controller: "[::]:9090"
 secret: ""
 external-ui: ui
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-cdn-fonts.zip
-find-process-mode: strict
-global-client-fingerprint: chrome
+find-process-mode: off
+mixed-port: 2334
+socks-port: 2336
+port: 
+keep-alive-idle: 600
+keep-alive-interval: 60
+redir-port: 7891
+tproxy-port: 7892
+geodata-mode: false
+geodata-loader: standard
 
-mixed-port: 5330
-socks-port: 2333
-port: 2334
-
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb
+  asn: https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country-asn.mmdb
+geo-auto-update: true
+geo-update-interval: 2
+profile:
+  store-selected: true
+  store-fake-ip: true
 sniffer:
   enable: true
   parse-pure-ip: true
+  override-destination: true
+  force-dns-mapping: true
+  skip-domain:
+    - emex.top
+    - +.emex.top
+    - '*.emex.top'
   sniff:
-    {
-      HTTP: { ports: [80, 8080-8880] },
-      TLS: { ports: [443, 8443] },
-      QUIC: { ports: [443, 8443] },
-    }
-  skip-domain: ["Mijia Cloud"]
-
+    HTTP:
+      port:
+        - "80"
+        - 8080-8880
+      override-destination: true
+    TLS:
+      port:
+        - "443"
+        - "8443"
+      override-destination: true
+    QUIC:
+      port:
+        - "443"
+        - "8443"
+      override-destination: true
 tun:
   enable: true
-  stack: system
-  dns-hijack: [any:53]
-  auto-route: true
-  auto-detect-interface: true
-  device: mihomo
+  stack: mixed
+  auto-route: false
+  auto-detect-interface: false
+  device: nikki
   strict-route: true
-
+  dns-hijack:
+    - tcp://any:53
+    - udp://any:53
+  auto-redirect: false
+  disable-icmp-forwarding: true
 dns:
   enable: true
   prefer-h3: true
   ipv6: true
-  listen: 0.0.0.0:1053
+  ipv6-timeout: 400
+  cache-algorithm: arc
+  listen: '[::]:1053'
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
+  fake-ip-filter-mode: rule
+  respect-rules: true
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+      - geolocation-!cn
+    ipcidr:
+      - 240.0.0.0/4
+  fake-ip-range6: fdfe:dcba:9876::1/64
+  fake-ip-ttl: 1
   fake-ip-filter:
-    ["rule-set:fakeip-filter", "+.emex.top", "*.emex.top", "emex.top"]
+    - GEOSITE,geolocation-!cn,fake-ip
+    - DOMAIN-SUFFIX,emex.top,real-ip
+    - GEOSITE,cn,real-ip
+    - MATCH,real-ip
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+    - 2400:3200::1
+    - 2001:4860:4860::8888
+  proxy-server-nameserver:
+    - tls://1.1.1.1
+    - tls://8.8.8.8
+  direct-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
   nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+    - 1.1.1.1
+    - 8.8.4.4
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - https://1.1.1.1/dns-query
-    - https://8.8.4.4/dns-query
+  fallback:
+    - https://dns.alidns.com/dns-query
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  direct-nameserver-follow-policy: true
+  nameserver-policy:
+    geosite:private:
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    geosite:cn:
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    geosite:geolocation-!cn:
+      - https://1.1.1.1/dns-query
+      - https://8.8.8.8/dns-query
 
 rule-providers:
   fakeip-filter:
