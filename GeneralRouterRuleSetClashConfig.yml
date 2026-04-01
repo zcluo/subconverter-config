@@ -339,34 +339,33 @@ rule-providers:
     interval: 86400
 
 rules:
-  - "SRC-IP-CIDR,10.0.0.128/32,\U0001F4DD Compiler"
-  - "DOMAIN-SUFFIX,emex.top,\U0001F3AF 全球直连"
-  - "NOT,((DST-PORT,21/22/53/80/110/123/143/194/443/465/853/873/993/995/5222/8080/8443/9418/2334/2336/12334/12336)),\U0001F3AF 全球直连"
-  - "RULE-SET,ads,\U0001F6D1 全球拦截"
+  - SRC-IP-CIDR,10.0.0.128/32,📝 Compiler
+  - DOMAIN-SUFFIX,emex.top,🎯 全球直连
+  - NOT,((DST-PORT,21/22/53/80/110/123/143/194/443/465/853/873/993/995/5222/8080/8443/9418/2334/2336/12334/12336)),🎯 全球直连
+  - RULE-SET,ads,🛑 全球拦截
   - RULE-SET,category-porn,㊙️ Porn
-  - "RULE-SET,private,\U0001F3AF 全球直连"
+  - RULE-SET,private,🎯 全球直连
   - RULE-SET,microsoft-cn,Ⓜ️ Microsoft
-  - "RULE-SET,apple-cn,\U0001F34E Apple"
-  - "RULE-SET,youtube,\U0001F39E️ YouTube"
-  - "RULE-SET,github,\U0001F4BB Github"
-  - "RULE-SET,google-cn,\U0001F50E Google"
-  - "RULE-SET,google,\U0001F50E Google"
-  - "RULE-SET,googleip,\U0001F50E Google"
-  - "RULE-SET,facebook,\U0001F4D6 Facebook"
-  - "RULE-SET,facebookip,\U0001F4D6 Facebook"
-  - "RULE-SET,tiktoknotcn,\U0001F3A5 TikTok"
-  - "RULE-SET,category-ai-!cn,\U0001F916 OpenAi"
-  - "RULE-SET,aiip,\U0001F916 OpenAi"
-  - "RULE-SET,netflix,\U0001F4FA Netflix"
-  - "RULE-SET,netflixip,\U0001F4FA Netflix"
-  - "RULE-SET,twitter,\U0001F99C Twitter"
-  - "RULE-SET,twitterip,\U0001F99C Twitter"
-  - "RULE-SET,telegram,\U0001F4F2 Telegram"
-  - "RULE-SET,telegramip,\U0001F4F2 Telegram"
-  - "RULE-SET,geolocationnotcn,\U0001F680 节点选择"
-  - "RULE-SET,gfw,\U0001F680 节点选择"
-  - "RULE-SET,cn,\U0001F3AF 全球直连"
-  - "RULE-SET,geolocationcn,\U0001F3AF 全球直连"
-  - "RULE-SET,privateip,\U0001F3AF 全球直连"
-  - "RULE-SET,cnip,\U0001F3AF 全球直连"
-  - "MATCH,\U0001F41F 漏网之鱼"
+  - RULE-SET,apple-cn,🍎 Apple
+  - RULE-SET,youtube,🎞️ YouTube
+  - RULE-SET,github,💻 Github
+  - RULE-SET,google-cn,🔎 Google
+  - RULE-SET,google,🔎 Google
+  - RULE-SET,googleip,🔎 Google
+  - RULE-SET,facebook,📖 Facebook
+  - RULE-SET,facebookip,📖 Facebook
+  - RULE-SET,tiktoknotcn,🎥 TikTok
+  - RULE-SET,category-ai-!cn,🤖 OpenAi
+  - RULE-SET,aiip,🤖 OpenAi
+  - RULE-SET,netflix,📺 Netflix
+  - RULE-SET,netflixip,📺 Netflix
+  - RULE-SET,twitter,🦜 Twitter
+  - RULE-SET,twitterip,🦜 Twitter
+  - RULE-SET,telegram,📲 Telegram
+  - RULE-SET,telegramip,📲 Telegram
+  - RULE-SET,geolocationnotcn,🚀 节点选择
+  - RULE-SET,gfw,🚀 节点选择
+  - RULE-SET,cn,🎯 全球直连
+  - RULE-SET,geolocationcn,🎯 全球直连
+  - RULE-SET,privateip,🎯 全球直连
+  - RULE-SET,cnip,🎯 全球直连
