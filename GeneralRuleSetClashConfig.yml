@@ -131,6 +131,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/fakeip-filter.mrs
     url: "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/fakeip-filter.mrs"
     interval: 86400
@@ -139,6 +140,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/category-ads-all.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs"
     interval: 86400
@@ -147,6 +149,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/private.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs"
     interval: 86400
@@ -155,6 +158,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/microsoft@cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs"
     interval: 86400
@@ -163,6 +167,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/apple@cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple@cn.mrs"
     interval: 86400
@@ -171,6 +176,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/google@cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google@cn.mrs"
     interval: 86400
@@ -179,6 +185,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/youtube.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
     interval: 86400
@@ -187,6 +194,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/category-ai-!cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ai-!cn.mrs"
     interval: 86400
@@ -195,6 +203,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/aiip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/ai.mrs"
     interval: 86400
@@ -203,6 +212,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/netflix.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/netflix.mrs"
     interval: 86400
@@ -211,6 +221,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/netflixip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs"
     interval: 86400
@@ -219,6 +230,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/category-porn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-porn.mrs"
     interval: 86400
@@ -227,6 +239,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/bing.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bing.mrs"
     interval: 86400
@@ -235,6 +248,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/twitter.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs"
     interval: 86400
@@ -243,6 +257,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/twitterip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs"
     interval: 86400
@@ -251,6 +266,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/google.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs"
     interval: 86400
@@ -259,6 +275,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/googleip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs"
     interval: 86400
@@ -267,6 +284,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/facebook.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/facebook.mrs"
     interval: 86400
@@ -275,6 +293,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/facebookip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/facebook.mrs"
     interval: 86400
@@ -283,6 +302,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/tiktok@!cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok@!cn.mrs"
     interval: 86400
@@ -291,6 +311,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/github.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/github.mrs"
     interval: 86400
@@ -299,6 +320,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/gfw.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/gfw.mrs"
     interval: 86400
@@ -307,6 +329,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs"
     interval: 86400
@@ -315,6 +338,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/cnip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs"
     interval: 86400
@@ -323,6 +347,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/telegram.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs"
     interval: 86400
@@ -331,6 +356,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/telegramip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs"
     interval: 86400
@@ -339,6 +365,7 @@ rule-providers:
     type: http
     behavior: ipcidr
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/privateip.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs"
     interval: 86400
@@ -347,6 +374,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/geolocation-!cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs"
     interval: 86400
@@ -355,6 +383,7 @@ rule-providers:
     type: http
     behavior: domain
     format: mrs
+    proxy:  🚀 节点选择
     path: ./rules/geolocation-cn.mrs
     url: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-cn.mrs"
     interval: 86400
