@@ -11,7 +11,7 @@ external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download
 find-process-mode: off
 mixed-port: 2334
 socks-port: 2336
-port: 
+port: 2335
 keep-alive-idle: 600
 keep-alive-interval: 60
 redir-port: 7891
