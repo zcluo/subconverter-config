@@ -374,6 +374,7 @@ rules:
   - RULE-SET,private,🎯 全球直连
   - RULE-SET,microsoft-cn,Ⓜ️ Microsoft
   - RULE-SET,apple-cn,🍎 Apple
+  - GEOSITE,GOOGLE-PLAY@CN,🎯 全球直连
   - RULE-SET,youtube,🎞️ YouTube
   - RULE-SET,github,💻 Github
   - RULE-SET,google-cn,🔎 Google
