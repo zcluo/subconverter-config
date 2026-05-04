@@ -94,8 +94,9 @@ dns:
   fake-ip-range6: fdfe:dcba:9876::1/64
   fake-ip-ttl: 1
   fake-ip-filter:
-    - GEOSITE,geolocation-!cn,fake-ip
+    - GEOSITE,GOOGLE-PLAY@CN,real-ip
     - DOMAIN-SUFFIX,emex.top,real-ip
+    - GEOSITE,geolocation-!cn,fake-ip
     - GEOSITE,cn,real-ip
     - MATCH,real-ip
   default-nameserver:
