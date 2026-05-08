@@ -388,7 +388,6 @@ rule-providers:
     interval: 86400
 
 rules:
-  - SRC-IP-CIDR,10.0.0.128/32,📝 Compiler
   - DOMAIN-SUFFIX,emex.top,🎯 全球直连
   - GEOSITE,GOOGLE-PLAY@CN,🎯 全球直连
   - DOMAIN-KEYWORD,googleplay,🔎 Google
