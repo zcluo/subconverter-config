@@ -369,8 +369,8 @@ rule-providers:
 rules:
   - SRC-IP-CIDR,10.0.0.128/32,📝 Compiler
   - DOMAIN,services.googleapis.cn,🔎 Google
+  - DOMAIN-SUFFIX,googlevideo.com,🔎 Google
   - DOMAIN-SUFFIX,emex.top,🎯 全球直连
-  - GEOSITE,GOOGLE-PLAY@CN,🎯 全球直连
   - DOMAIN-KEYWORD,googleplay,🔎 Google
   - DOMAIN-KEYWORD,google-play,🔎 Google
   - DOMAIN-SUFFIX,googleapis.cn,🔎 Google
